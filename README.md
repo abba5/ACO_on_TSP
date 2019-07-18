@@ -7,7 +7,8 @@ INPUT Formate: 	First Line number of Citys N Number of edges M <br />
 
 OUTPUT: Total Cost and Road <br />
 
-INPUT:	N M <br />
+INPUT:	<br />
+N M <br />
 		U1 V1 W1 <br />	
  		U2 V2 W2 <br />
 		. <br />
@@ -16,7 +17,8 @@ INPUT:	N M <br />
 		Um Vm Wm <br />
 
 
-OUTPUT: MIN_COST <br />
+OUTPUT: <br />
+MIN_COST <br />
 		U1 U2 ... Un (index of Citys) <br />
 	
 
