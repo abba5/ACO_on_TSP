@@ -8,15 +8,15 @@ INPUT Formate: 	First Line number of Citys N Number of edges M
 OUTPUT: Totle Cost and Road
 
 INPUT:	N M
-	U1 V1 W1	
- 	U2 V2 W2
-	.
-	.
-	.
-	Um Vm Wm
+		U1 V1 W1	
+ 		U2 V2 W2
+		.
+		.
+		.
+		Um Vm Wm
 
 
 OUTPUT: MIN_COST
-	U1 U2 ... Un (index of Citys)
+		U1 U2 ... Un (index of Citys)
 	
 
