@@ -2,21 +2,21 @@
 
 The reference of the algorithm from this [Site](https://www.sciencedirect.com/science/article/pii/S1002007108002736) 
 
-INPUT Formate: 	First Line number of Citys N Number of edges M
-		City U and City V dist between city U to V
+INPUT Formate: 	First Line number of Citys N Number of edges M <br />
+				City U and City V dist between city U to V <br />
 
-OUTPUT: Totle Cost and Road
+OUTPUT: Total Cost and Road <br />
 
-INPUT:	N M
-		U1 V1 W1	
- 		U2 V2 W2
-		.
-		.
-		.
-		Um Vm Wm
+INPUT:	N M <br />
+		U1 V1 W1 <br />	
+ 		U2 V2 W2 <br />
+		. <br />
+		. <br />
+		. <br />
+		Um Vm Wm <br />
 
 
-OUTPUT: MIN_COST
-		U1 U2 ... Un (index of Citys)
+OUTPUT: MIN_COST <br />
+		U1 U2 ... Un (index of Citys) <br />
 	
 
