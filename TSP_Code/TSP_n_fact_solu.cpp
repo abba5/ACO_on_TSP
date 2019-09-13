@@ -28,7 +28,8 @@ int32_t main(){
 
 	ios::sync_with_stdio(0), cin.tie(0), cout.tie(0);
 
-	cin >> n >> q;
+	cin >> n;
+	q = ((n)*(n-1)) >> 1;
 
 	fill(n);
 
@@ -44,7 +45,7 @@ int32_t main(){
 	std::vector<int> v(n), TSP_path;
 	int min_cost = INT_MAX;
 	iota(v.begin(), v.end(), 0);
-
+	int cou = 0;
 	do{
 		int temp = 0;
 		for(int i = 1; i < n; ++i){
@@ -56,10 +57,9 @@ int32_t main(){
 			min_cost = temp;
 			TSP_path = v;
 		}
-
+		
 	}while(next_permutation(v.begin(), v.end()));
 
-	print(TSP_path);
 	cout << min_cost << '\n';
 
 	return 0;

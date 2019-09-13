@@ -32,41 +32,34 @@ void print(std::vector<int> &v){
     cout << '\n';
 }
 
-DATA f(int per, int last, int bit_arr){
-        
 
-    if(dp[last][bit_arr].value != -1){
-        return dp[per][bit_arr];
+DATA f(int cur, int bit_arr){
+
+    if(dp[cur][bit_arr].value != -1){
+        return dp[cur][bit_arr];
     }
 
     if(bit_arr == 0){
-        DATA temp;
-        temp.value = dis[last][per];
-        temp.v = {last, per};
+        DATA temp = {dis[0][cur], {cur}};
         return temp;
-
     }else{
-
-        DATA ans;
-        ans.value = INT_MAX;
-
+        
+        DATA min_ans = {INT_MAX, {}};
 
         for(int i = 0; i < n; ++i){
             if(bit_arr & (1 << i)){
-                
-                DATA temp = f(i, last, bit_arr ^(1 << i));
 
+                DATA temp = f(i, bit_arr ^ (1 << i));
+                temp.value += dis[i][cur];
 
-                if(temp.value + dis[per][i] < ans.value){
-                    ans.value = temp.value + dis[per][i];
-                    ans.v = temp.v;
+                if(min_ans.value > temp.value){
+                    min_ans = temp;
+                    min_ans.v.push_back(cur);
                 }
             }
         }
 
-        ans.v.push_back(per);
-
-        return dp[last][bit_arr] = ans;
+        return dp[cur][bit_arr] = min_ans;
     }
 
 }
@@ -75,7 +68,8 @@ int32_t main(){
 
     ios::sync_with_stdio(0), cin.tie(0), cout.tie(0);
 
-    cin >> n >> q;
+    cin >> n;
+    q = ((n)*(n-1)) >> 1;
 
     fill(n);
 
@@ -88,37 +82,9 @@ int32_t main(){
     }
 
     int bit_arr = 0;
+    bit_arr = (1 << n) - 1;
 
-    for(int i = 0; i < n; ++i){
-        bit_arr |= (1 << i);
-    }
-
-    DATA min_cost;
-    min_cost.value = INT_MAX;
-
-    
-    for(int i = 0; i < n; ++i){
-
-        DATA ans;
-        ans.value = INT_MAX;
-
-        for(int j = 0; j < n; ++j){
-
-            if(i == j) continue;
-
-            DATA temp = f(i, j, bit_arr^(1 << j)^(1 << i));
-
-            if(temp.value + dis[i][j] < ans.value){
-                ans.value = temp.value + dis[i][j];
-                ans.v = temp.v;
-            }
-        }
-
-        if(min_cost.value > ans.value){
-            min_cost.value = ans.value;
-            min_cost.v = ans.v;
-        }
-    }
+    DATA min_cost = f(0, bit_arr ^ 1);
 
     cout << min_cost.value << '\n';
 
