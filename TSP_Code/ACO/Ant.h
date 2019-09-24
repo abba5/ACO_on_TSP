@@ -3,10 +3,8 @@
 @contact:   abbastrick@gmail.com
 */
 
-#include <iostream>
 #include <vector>
-// #include "/home/abbas/ACO_on_TSP/TSP_Code/Pheromone.cpp"
-#include "/home/abbas/ACO_on_TSP/TSP_Code/Random.cpp"
+#include "Random.h"
 
 class Ant{
 
@@ -31,7 +29,6 @@ Ant::Ant(int n){
     visit.resize(n, 0);
     start_city = random_n(n);
     num = n;
-    visit[start_city] = 1;
 
 }
 
@@ -46,9 +43,9 @@ int Ant::find_path(Pheromone &p){
 
     for(int i = 1; i < num; ++i){
 
+        visit[start_city] = 1;
         start_city = next_node(start_city, p);
         if(start_city == -1) continue;
-        visit[start_city] = 1;
         path.push_back(start_city);
 
     }
@@ -63,7 +60,7 @@ int Ant::next_node(int cur_node, Pheromone &p){
     std::vector<int> allowed;
 
     for(int i = 0;i < num; ++i)
-        if(visit[i] == 0 and cur_node != i){
+        if(visit[i] == 0){
             allowed.push_back(i);
         }
     
@@ -73,9 +70,10 @@ int Ant::next_node(int cur_node, Pheromone &p){
 
     for(int i = 0; i < allowed.size(); ++i){
         double temp = p.find_probability(cur_node, allowed[i], sum);
+      
         if(temp > max_p){
             max_p = temp;
-            node = i;
+            node = allowed[i];
         }
     }
 

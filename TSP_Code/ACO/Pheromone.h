@@ -3,10 +3,9 @@
 @contact:   abbastrick@gmail.com
 */
 
-#include <iostream>
 #include <vector>
 #include <cmath>
-#include "/home/abbas/ACO_on_TSP/TSP_Code/Graph.cpp"
+#include "Graph.h"
 
 class Pheromone{
 
@@ -70,7 +69,7 @@ double Pheromone::find_down_sum(int cur_node, std::vector<int> &node){
 }
 
 void Pheromone::delata_clear(){
-	 delata_tau.resize(num, std::vector<double> (num, 0));
+	delata_tau.resize(num, std::vector<double> (num, 0));
 }
 
 int Pheromone::update_pheromone_on_path(std::vector<int> &path){
@@ -82,10 +81,8 @@ int Pheromone::update_pheromone_on_path(std::vector<int> &path){
 		Lk += g.at(path[i], path[(i+1) % path.size()]);
 	}
 
-
-
 	for(int i = 0; i < path.size(); ++i){
-		delata_tau[path[i]][path[ (i+1) % path.size() ]] += Q / (double)Lk;
+		delata_tau[path[i]][path[ (i+1) % path.size() ]] += (Q / (double)Lk);
 	}
 
 	return Lk;

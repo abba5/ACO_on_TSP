@@ -3,12 +3,11 @@
 @contact:   abbastrick@gmail.com
 */
 
-#include <iostream>
 #include <algorithm>
 #include <climits>
 #include <vector>
-#include "/home/abbas/ACO_on_TSP/TSP_Code/Pheromone.cpp"
-#include "/home/abbas/ACO_on_TSP/TSP_Code/Ant.cpp"
+#include "Pheromone.h"
+#include "Ant.h"
 
 class ACO{
 
@@ -16,6 +15,7 @@ class ACO{
     int Number_of_Ants;
     int num;
     Pheromone p;
+    
 public:
 
     ACO(){}
@@ -49,11 +49,11 @@ int ACO::move_ants(){
 
     for(int i = 0; i < Number_of_Ants; ++i){    
         Ant ant(num);
-        min_dist = std::min(min_dist, ant.find_path(p));
+        int temp = ant.find_path(p);
+        min_dist = std::min(min_dist, temp);
     }
 
     p.update_pheromone();
     return min_dist;
 
 }
-

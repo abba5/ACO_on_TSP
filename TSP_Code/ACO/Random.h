@@ -1,7 +1,4 @@
-
 #include <random>
-#include <iostream>
-
 int random_n(int n)
 {
     std::random_device dev;
