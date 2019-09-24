@@ -1,3 +1,5 @@
+/*  uniform distriybuterd random function  */
+
 #include <random>
 int random_n(int n)
 {

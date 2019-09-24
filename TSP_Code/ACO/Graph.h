@@ -1,7 +1,12 @@
 /*
-@author:    Abbas M. Rangwala
-@contact:   abbastrick@gmail.com
+    Author  : Abbas Rangwala
+    Contact : abbastrick@gmail.com
+    
+    definition of class Ant
+        
+    -> this class will store cost of all path and cities 
 */
+
 
 #include <iostream>
 #include <vector>
@@ -16,8 +21,14 @@ public:
     Graph_of_city(int n);
     Graph_of_city(){}
     ~Graph_of_city();
+    
+    // get all input of cities and path data
     void get_input(int n);
+
+    // return cost u to v
     int at(int u, int v);
+
+    // print graph
     void print_cost();
 
 };

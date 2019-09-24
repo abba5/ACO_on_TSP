@@ -51,6 +51,7 @@ int32_t main(){
 		for(int i = 1; i < n; ++i){
 			temp += dis[v[i-1]][v[i]];
 		}
+		
 		temp += dis[v[n-1]][v[0]];
 
 		if(temp < min_cost){
@@ -61,6 +62,10 @@ int32_t main(){
 	}while(next_permutation(v.begin(), v.end()));
 
 	cout << min_cost << '\n';
+
+	for(auto i: TSP_path)
+		cout << i + 1 << ' ';
+
 
 	return 0;
 }
